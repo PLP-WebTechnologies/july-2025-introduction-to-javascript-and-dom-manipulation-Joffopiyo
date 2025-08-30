@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Week 5 JavaScript Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #4cdbff;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::after {
+            content: "";
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(to right, rgba(76, 219, 255, 0.5), transparent);
+            margin-left: 15px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ffcc00;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 80px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #ffcc00;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .code-comment {
+            color: #aaa;
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Week 5 JavaScript Assignment</h1>
+            <p class="subtitle">Demonstrating JavaScript fundamentals: variables, conditionals, functions, loops, and DOM manipulation</p>
+        </header>
+        
+        <div class="grid">
+            <!-- Part 1: Variables and Conditionals -->
+            <div class="card">
+                <h2>🎯 Part 1: Variables & Conditionals</h2>
+                <div class="input-group">
+                    <label for="userAge">Enter your age:</label>
+                    <input type="number" id="userAge" min="0" max="120" value="25">
+                </div>
+                <button onclick="checkAge()">Check Age Category</button>
+                <div class="output" id="ageOutput">Result will appear here...</div>
+                <p class="code-comment">// Demonstrates variable declarations and conditional statements</p>
+            </div>
+            
+            <!-- Part 2: Functions -->
+            <div class="card">
+                <h2>❤️ Part 2: Functions</h2>
+                <div class="input-group">
+                    <label for="num1">Number 1:</label>
+                    <input type="number" id="num1" value="10">
+                </div>
+                <div class="input-group">
+                    <label for="num2">Number 2:</label>
+                    <input type="number" id="num2" value="5">
+                </div>
+                <button onclick="calculate('add')">Add Numbers</button>
+                <button onclick="calculate('multiply')">Multiply Numbers</button>
+                <div class="output" id="functionOutput">Result will appear here...</div>
+                <p class="code-comment">// Demonstrates custom functions for code reusability</p>
+            </div>
+            
+            <!-- Part 3: Loops -->
+            <div class="card">
+                <h2>🔁 Part 3: Loops</h2>
+                <div class="input-group">
+                    <label for="loopNumber">Enter a number (1-10):</label>
+                    <input type="number" id="loopNumber" min="1" max="10" value="5">
+                </div>
+                <button onclick="runWhileLoop()">Run While Loop</button>
+                <button onclick="runForLoop()">Run For Loop</button>
+                <div class="output" id="loopOutput">Loop results will appear here...</div>
+                <p class="code-comment">// Demonstrates while and for loop structures</p>
+            </div>
+            
+            <!-- Part 4: DOM Manipulation -->
+            <div class="card">
+                <h2>🌐 Part 4: DOM Manipulation</h2>
+                <button onclick="changeBackground()">Change Background Color</button>
+                <button onclick="updateText()">Update Text Content</button>
+                <button onclick="createNewElement()">Add New Element</button>
+                <div class="output" id="domOutput">
+                    This is the original content of the DOM output area.
+                </div>
+                <p class="code-comment">// Demonstrates DOM manipulation techniques</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Week 5 JavaScript Assignment - Demonstrating core JavaScript concepts</p>
+        </div>
+    </div>
+
+    <script>
+        // Part 1: Variable declarations and conditionals
+        function checkAge() {
+            // Variable declaration
+            const age = parseInt(document.getElementById('userAge').value);
+            let category; // This variable will be set based on conditionals
+            
+            // Conditional statements
+            if (age < 0) {
+                category = "an invalid age. Please enter a positive number.";
+            } else if (age < 13) {
+                category = "a child";
+            } else if (age < 20) {
+                category = "a teenager";
+            } else if (age < 65) {
+                category = "an adult";
+            } else {
+                category = "a senior";
+            }
+            
+            // Output the result
+            document.getElementById('ageOutput').innerHTML = 
+                `At <span class="highlight">${age}</span> years old, you are <span class="highlight">${category}</span>.`;
+        }
+
+        // Part 2: Custom functions
+        // Function 1: Add two numbers
+        function addNumbers(a, b) {
+            return a + b;
+        }
+        
+        // Function 2: Multiply two numbers
+        function multiplyNumbers(a, b) {
+            return a * b;
+        }
+        
+        // Function to handle the calculation based on button click
+        function calculate(operation) {
+            // Get input values
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+            
+            // Determine which operation to perform
+            if (operation === 'add') {
+                result = addNumbers(num1, num2);
+                document.getElementById('functionOutput').innerHTML = 
+                    `<span class="highlight">${num1}</span> + <span class="highlight">${num2}</span> = <span class="highlight">${result}</span>`;
+            } else if (operation === 'multiply') {
+                result = multiplyNumbers(num1, num2);
+                document.getElementById('functionOutput').innerHTML = 
+                    `<span class="highlight">${num1}</span> × <span class="highlight">${num2}</span> = <span class="highlight">${result}</span>`;
+            }
+        }
+
+        // Part 3: Loops
+        // While loop example
+        function runWhileLoop() {
+            const number = parseInt(document.getElementById('loopNumber').value);
+            let output = "<h3>While Loop Results:</h3>";
+            let count = 1;
+            
+            // While loop
+            while (count <= number) {
+                output += `Iteration <span class="highlight">${count}</span><br>`;
+                count++;
+            }
+            
+            document.getElementById('loopOutput').innerHTML = output;
+        }
+        
+        // For loop example
+        function runForLoop() {
+            const number = parseInt(document.getElementById('loopNumber').value);
+            let output = "<h3>For Loop Results:</h3>";
+            
+            // For loop
+            for (let i = 1; i <= number; i++) {
+                output += `Iteration <span class="highlight">${i}</span><br>`;
+                
+                // Additional logic based on iteration number
+                if (i % 2 === 0) {
+                    output += `→ <span class="highlight">${i}</span> is even<br>`;
+                } else {
+                    output += `→ <span class="highlight">${i}</span> is odd<br>`;
+                }
+            }
+            
+            document.getElementById('loopOutput').innerHTML = output;
+        }
+
+        // Part 4: DOM Interactions
+        // DOM Interaction 1: Change background color
+        function changeBackground() {
+            const colors = ["#ff6b6b", "#4cdbff", "#9cec5b", "#ffc53d", "#a172f7"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('domOutput').style.backgroundColor = randomColor;
+            document.getElementById('domOutput').innerHTML = 
+                `Background changed to <span class="highlight">${randomColor}</span>`;
+        }
+        
+        // DOM Interaction 2: Update text content
+        function updateText() {
+            const texts = [
+                "The DOM has been updated!",
+                "You're interacting with JavaScript!",
+                "This content was changed dynamically.",
+                "DOM manipulation is powerful!"
+            ];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+            document.getElementById('domOutput').innerHTML = randomText;
+        }
+        
+        // DOM Interaction 3: Create a new element
+        function createNewElement() {
+            const newElement = document.createElement('p');
+            newElement.textContent = "This is a new element added by JavaScript!";
+            newElement.style.color = "#ffcc00";
+            newElement.style.marginTop = "10px";
+            document.getElementById('domOutput').appendChild(newElement);
+        }
+    </script>
+</body>
+</html>
